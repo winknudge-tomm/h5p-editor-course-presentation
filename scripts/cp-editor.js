@@ -1294,7 +1294,15 @@ H5PEditor.CoursePresentation.prototype.removeElement = function (element, $wrapp
   var elementInstance = this.cp.elementInstances[slideIndex][elementIndex];
   var removeForm = (element.children.length ? true : false);
 
+  // debug stuff
+
+   for (var i = 0; i < element.children.length; i++) {
+        if(element.children[i].field.type == "library") {
+          element.children[i].remove = function () {};
+        }
+      }
   if (isContinuousText) {
+    console.log("is continuois text?");
     var CTs = this.getCTs(false, true);
     if (CTs.length === 2) {
       // Prevent removing form while there are still some CT elements left
